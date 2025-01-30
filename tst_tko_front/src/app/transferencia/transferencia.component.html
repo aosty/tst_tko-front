@@ -1,0 +1,47 @@
+
+ <table style="width:100%">
+  <tr>
+    <th></th>
+    <th style="width=200px">Conta Destino</th>
+    <th style="width=200px">Data Agendamento</th>
+    <th style="width=200px">Valor Transferencia</th>
+    <th></th>
+  </tr>
+  <tr>
+  	<td></td>
+    <td style="text-align: center;">
+    	<input [(ngModel)]="transferenciaRequest.destino" placeholder="Conta Destino">
+    </td>
+    <td style="text-align: center;">
+    	<input type="date" [(ngModel)]="transferenciaRequest.dataAgendamento" placeholder="Data Agendamento">
+
+    </td>
+    <td style="text-align: center;">
+    	<input [(ngModel)]="transferenciaRequest.valor" placeholder="Valor Transferencia">
+    </td>
+    <td></td>
+  </tr>
+	<tr>
+	<td></td>
+  	<td colspan="3" align="right">
+  		<button type="button" class="btn btn-default" (click)="agendar()">Agendar</button>
+  	</td>
+  	<td></td>
+  </tr>
+</table>
+<hr>
+
+<table id="fancy">
+	<th>Conta Destino</th>
+	<th>Valor</th>
+	<th>Data Agendamento</th>
+	<th>taxa</th>
+<ng-template ngFor let-agendamento [ngForOf]="agendamentos" let-i="index">
+  <tr>
+  		<td>{{agendamento.destino}}</td>
+  		<td>{{agendamento.valor  | currency: 'BRL'}}</td>
+  		<td>{{agendamento.dataAgendamento | date: 'dd/MM/yyyy'}}</td>
+  		<td>{{agendamento.taxa.porcentagem}} %</td>
+</ng-template>
+</table>
+
